@@ -57,9 +57,9 @@ passport.use(
   )
 );
 
-//========================================== permit for user ==========================================
-exports.user = (req, res, next) => {
-  passport.authorize("user", { session: false }, (err, user, info) => {
+//========================================== permit for supervisor ==========================================
+exports.supervisor = (req, res, next) => {
+  passport.authorize("supervisor", { session: false }, (err, user, info) => {
     if (err) {
       return next({
         message: err.message,
@@ -79,7 +79,7 @@ exports.user = (req, res, next) => {
   })(req, res, next);
 };
 passport.use(
-  "user",
+  "supervisor",
   new JWTstrategy(
     {
       secretOrKey: process.env.JWT_SECRET,
@@ -90,7 +90,7 @@ passport.use(
       try {
         const data = await user.findOne({ _id: token.user }).select("role");
 
-        if (data.role === "user") {
+        if (data.role === "supervisor") {
           return done(null, token);
         }
 
