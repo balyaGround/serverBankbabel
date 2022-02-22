@@ -13,3 +13,4 @@ const uri = mongoose
   .catch((err) => console.log(err));
 
 exports.parameter = require("./parameter");
+exports.user = require("./user");
