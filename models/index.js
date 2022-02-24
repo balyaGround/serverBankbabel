@@ -14,3 +14,4 @@ const uri = mongoose
 
 exports.parameter = require("./parameter");
 exports.user = require("./user");
+exports.log = require("./logs");

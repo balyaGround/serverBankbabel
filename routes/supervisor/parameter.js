@@ -1,7 +1,7 @@
 const express = require("express");
 const route = express.Router();
 
-const { admin } = require("../../middlewares/auth");
+const { supervisor } = require("../../middlewares/auth");
 
 const {
   getParameter,
@@ -17,11 +17,11 @@ const {
 } = require("../../middlewares/validator/parameterValidator");
 
 route.get("/", getParameter);
-route.post("/", admin, updateParameterVldt, updateParameterCtrl, logCtrl);
-route.post("/title", admin, updateTitleVldt, updateParameterCtrl, logCtrl);
+route.post("/", supervisor, updateParameterVldt, updateParameterCtrl, logCtrl);
+route.post("/title", supervisor, updateTitleVldt, updateParameterCtrl, logCtrl);
 route.post(
   "/attributes",
-  admin,
+  supervisor,
   updateScheduleAttrVldt,
   updateParameterCtrl,
   logCtrl

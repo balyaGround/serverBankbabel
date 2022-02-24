@@ -3,6 +3,11 @@ const mongooseDelete = require("mongoose-delete");
 
 const parameterSchema = new mongoose.Schema(
   {
+    title: {
+      type: String,
+      required: false,
+      unique: true,
+    },
     background: {
       type: String,
       required: true,
@@ -21,6 +26,11 @@ const parameterSchema = new mongoose.Schema(
     percentage: {
       type: Number,
       required: true,
+      unique: true,
+    },
+    attributes: {
+      type: Array,
+      required: false,
       unique: true,
     },
   },
